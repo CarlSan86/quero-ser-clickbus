@@ -100,10 +100,16 @@ class Grouper
 	            $setGrouped[$index][] = $set[$i];
 	        }
 
-    		$return = $setGrouped;
+	        $cleanSet = array();
+
+	        foreach ($setGrouped as $index => $subSet) {
+	        	array_push($cleanSet, $subSet);
+	        }
+
+    		$return = $cleanSet;
     	}
     	else{
-    		$return = array();
+    		throw new Exception('InvalidArgumentException');
     	}
 
     	return json_encode($return);    	
